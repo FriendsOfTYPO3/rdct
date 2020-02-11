@@ -10,17 +10,25 @@ namespace FoT3\Rdct\ViewHelpers;
  * source code.
  */
 
+use FoT3\Rdct\Redirects;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 
 class RedirectViewHelper extends AbstractViewHelper
 {
+
     /**
-     * @var  \FoT3\Rdct\Redirects
-     * @inject
+     * @var Redirects
      */
     protected $rdct;
 
+    /**
+     * @param Redirects $rdct
+     */
+    public function injectRdct(Redirects $rdct): void
+    {
+        $this->rdct = $rdct;
+    }
 
     /**
      * @return void
