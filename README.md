@@ -8,14 +8,14 @@ own public repository.
 
 ## Installation
 The latest version can be installed via TER (https://extensions.typo3.org) or via composer
-by adding ''composer require friendsoftypo3/rdct'' in a TYPO3 v8+ installation.
+by adding `composer require friendsoftypo3/rdct` in a TYPO3 v8+ installation.
 
 ## Inside the logic
 All data is stored in a database table called `cache_md5params`, where the `hash` field
 is a unique identifier which will be used in `index.php?RDCT=$hash`.
 
-The previously `$TSFE->sendRedirect` functionality was moved into `FoT3\Rdct\Redirects->sendRedirect()`
-and hooks into the Frontend requests automatically.
+The previously `$TSFE->sendRedirect` functionality was moved into a PSR-15 middleware
+and hooks into Frontend requests automatically.
 
 For creating links - adding the records into the database table, the method 
 `FoT3\Rdct\Redirects->makeRedirectUrl()` should be called, which was previously located under
@@ -44,5 +44,5 @@ area while being part of the TYPO3 Core, and then extracted into its own extensi
 Benni Mack.
 
 This package is now maintained by a loose group of TYPO3 enthusiasts inside
-the TYPO3 Community. Feel free to contact Benni Mack (benni.mack@typo3.org) for any
-questions regarding "rdct".
+the TYPO3 Community. Feel free to contact Benni Mack (benni@typo3.org) for any
+questions regarding `rdct`.
