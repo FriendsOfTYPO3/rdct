@@ -11,7 +11,7 @@ namespace FoT3\Rdct\ViewHelpers;
  */
 
 use FoT3\Rdct\Redirects;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 
 class RedirectViewHelper extends AbstractViewHelper
