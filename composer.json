@@ -2,7 +2,12 @@
 	"name": "friendsoftypo3/rdct",
 	"type": "typo3-cms-extension",
 	"description": "Frontend redirects based on RDCT GET parameter",
-	"homepage": "https://typo3.org",
+	"homepage": "https://extensions.typo3.org/extension/rdct",
+	"support": {
+		"docs": "https://docs.typo3.org/p/friendsoftypo3/rdct/main/en-us/",
+		"issues": "https://github.com/FriendsOfTYPO3/rdct/issues",
+		"source": "https://github.com/FriendsOfTYPO3/rdct"
+	},
 	"license": ["GPL-2.0+"],
 	"authors": [
 		{
