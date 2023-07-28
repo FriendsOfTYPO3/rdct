@@ -1,5 +1,5 @@
 <?php
-namespace FoT3\Rdct\ViewHelpers;
+declare(strict_types=1);
 
 /*
  * This file is part of the FoT3\Rdct package.
@@ -10,9 +10,10 @@ namespace FoT3\Rdct\ViewHelpers;
  * source code.
  */
 
+namespace FoT3\Rdct\ViewHelpers;
+
 use FoT3\Rdct\Redirects;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 
 class RedirectViewHelper extends AbstractViewHelper
 {

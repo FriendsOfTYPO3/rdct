@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-namespace FoT3\Rdct;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,6 +13,8 @@ namespace FoT3\Rdct;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+namespace FoT3\Rdct;
 
 use FoT3\Rdct\Repository\CacheMd5paramsRepository;
 use TYPO3\CMS\Core\Context\Context;
@@ -36,7 +37,7 @@ class Redirects
         string $inUrl,
         int $l = 0,
         string $index_script_url = ''
-    ) : string
+    ): string
     {
         if (strlen($inUrl) > $l) {
             $md5 = substr(md5($inUrl), 0, 20);

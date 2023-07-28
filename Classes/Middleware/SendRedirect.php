@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-namespace FoT3\Rdct\Middleware;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,6 +13,8 @@ namespace FoT3\Rdct\Middleware;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+namespace FoT3\Rdct\Middleware;
 
 use FoT3\Rdct\Repository\CacheMd5paramsRepository;
 use Psr\Http\Message\ResponseInterface;
