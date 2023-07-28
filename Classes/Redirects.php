@@ -30,13 +30,13 @@ class Redirects
      *
      * @param string $inUrl Input URL
      * @param int $l URL string length limit
-     * @param string $index_script_url URL of "index script" - the prefix of the "?RDCT=..." parameter. If not supplied it will default to \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR').'index.php'
+     * @param string $indexScriptUrl URL of "index script" - the prefix of the "?RDCT=..." parameter. If not supplied it will default to \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR').'index.php'
      * @return string Processed URL
      */
     public function makeRedirectUrl(
         string $inUrl,
         int $l = 0,
-        string $index_script_url = ''
+        string $indexScriptUrl = ''
     ): string
     {
         if (strlen($inUrl) > $l) {
@@ -53,7 +53,7 @@ class Redirects
             }
             //@TODO GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR')
             //https://docs.typo3.org/m/typo3/reference-coreapi/12.4/en-us/ApiOverview/RequestLifeCycle/RequestAttributes/NormalizedParams.html?highlight=getindpenv#generalutility-getindpenv-migration
-            $inUrl = ($index_script_url ?: GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR') . 'index.php') . '?RDCT=' . $md5;
+            $inUrl = ($indexScriptUrl ?: GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR') . 'index.php') . '?RDCT=' . $md5;
         }
         return $inUrl;
     }
