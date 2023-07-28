@@ -21,6 +21,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -66,11 +67,11 @@ class SendRedirect implements MiddlewareInterface
             ->where(
                 $queryBuilder->expr()->eq(
                     'md5hash',
-                    $queryBuilder->createNamedParameter($redirectHash, \PDO::PARAM_STR)
+                    $queryBuilder->createNamedParameter($redirectHash, Connection::PARAM_STR)
                 )
             )
-            ->execute()
-            ->fetch();
+            ->executeQuery()
+            ->fetchAssociative();
     }
 
     /**
