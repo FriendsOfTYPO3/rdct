@@ -15,8 +15,8 @@ namespace FoT3\Rdct;
  * The TYPO3 project - inspiring people to share!
  */
 
+use FoT3\Rdct\Repository\CacheMd5paramsRepository;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -40,24 +40,18 @@ class Redirects
     {
         if (strlen($inUrl) > $l) {
             $md5 = substr(md5($inUrl), 0, 20);
-            $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('cache_md5params');
-            $count = $connection->count(
-                '*',
-                'cache_md5params',
-                ['md5hash' => $md5]
-            );
+            $cacheMd5paramsRepository = GeneralUtility::makeInstance(CacheMd5paramsRepository::class);
+            $count = $cacheMd5paramsRepository->countByMd5hash($md5);
+
             if (!$count) {
-                $context = GeneralUtility::makeInstance(Context::class);
-                $connection->insert(
-                    'cache_md5params',
-                    [
-                        'md5hash' => $md5,
-                        'tstamp'  => $context->getPropertyFromAspect('date', 'timestamp'),
-                        'type'    => 2,
-                        'params'  => $inUrl
-                    ]
+                $cacheMd5paramsRepository->insert(
+                    $md5,
+                    GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp'),
+                    $inUrl
                 );
             }
+            //@TODO GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR')
+            //https://docs.typo3.org/m/typo3/reference-coreapi/12.4/en-us/ApiOverview/RequestLifeCycle/RequestAttributes/NormalizedParams.html?highlight=getindpenv#generalutility-getindpenv-migration
             $inUrl = ($index_script_url ?: GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR') . 'index.php') . '?RDCT=' . $md5;
         }
         return $inUrl;
