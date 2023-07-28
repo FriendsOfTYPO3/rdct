@@ -33,7 +33,7 @@ class RedirectViewHelper extends AbstractViewHelper
     /**
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('inUrl', 'string', 'Input URL', true);
         $this->registerArgument('length', 'integer', 'URL string length limit', false, 0);
@@ -43,7 +43,7 @@ class RedirectViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         return $this->rdct->makeRedirectUrl($this->arguments['inUrl'], $this->arguments['length'], $this->arguments['indexScriptUrl']);
     }
