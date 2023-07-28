@@ -32,7 +32,11 @@ class Redirects
      * @param string $index_script_url URL of "index script" - the prefix of the "?RDCT=..." parameter. If not supplied it will default to \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_DIR').'index.php'
      * @return string Processed URL
      */
-    public function makeRedirectUrl($inUrl, $l = 0, $index_script_url = '')
+    public function makeRedirectUrl(
+        string $inUrl,
+        int $l = 0,
+        string $index_script_url = ''
+    ) : string
     {
         if (strlen($inUrl) > $l) {
             $md5 = substr(md5($inUrl), 0, 20);
