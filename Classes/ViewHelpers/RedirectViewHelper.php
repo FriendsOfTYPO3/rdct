@@ -1,5 +1,5 @@
 <?php
-namespace FoT3\Rdct\ViewHelpers;
+declare(strict_types=1);
 
 /*
  * This file is part of the FoT3\Rdct package.
@@ -10,9 +10,10 @@ namespace FoT3\Rdct\ViewHelpers;
  * source code.
  */
 
+namespace FoT3\Rdct\ViewHelpers;
+
 use FoT3\Rdct\Redirects;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 
 class RedirectViewHelper extends AbstractViewHelper
 {
@@ -33,7 +34,7 @@ class RedirectViewHelper extends AbstractViewHelper
     /**
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('inUrl', 'string', 'Input URL', true);
         $this->registerArgument('length', 'integer', 'URL string length limit', false, 0);
@@ -43,7 +44,7 @@ class RedirectViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         return $this->rdct->makeRedirectUrl($this->arguments['inUrl'], $this->arguments['length'], $this->arguments['indexScriptUrl']);
     }
