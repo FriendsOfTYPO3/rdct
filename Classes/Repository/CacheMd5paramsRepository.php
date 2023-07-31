@@ -25,17 +25,17 @@ class CacheMd5paramsRepository
 {
     protected string $table = 'cache_md5params';
 
-    public function getConnectionPool(): ConnectionPool
+    protected function getConnectionPool(): ConnectionPool
     {
         return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 
-    public function getConnection(): Connection
+    protected function getConnection(): Connection
     {
         return $this->getConnectionPool()->getConnectionForTable($this->table);
     }
 
-    public function getQueryBuilder(): QueryBuilder
+    protected function getQueryBuilder(): QueryBuilder
     {
         return $this->getConnectionPool()->getQueryBuilderForTable($this->table);
     }
